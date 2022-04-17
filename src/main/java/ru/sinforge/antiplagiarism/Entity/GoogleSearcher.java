@@ -37,10 +37,12 @@ public class GoogleSearcher {
 
     }
 
+    private String Result = "";
 
     //Составляет один единый текст из найденных на разных сайтах
-    public void ResultOfScan(String TextForCheck, ArrayList<String> urls) throws IOException {
+    public String ResultOfScan(String TextForCheck, ArrayList<String> urls) throws IOException {
         Shingle shingle = new Shingle();
+        Result = "";
         TextForCheck = shingle.canonize(TextForCheck);
         int size1 = TextForCheck.length();
         ArrayList<Integer> hashes_textcheck = shingle.genShingle(TextForCheck);
@@ -61,7 +63,7 @@ public class GoogleSearcher {
             int size2 = result_text.length();
             double koeffic = size2/size1;
             ArrayList<Integer> result_hashes = shingle.genShingle(result_text);
-            System.out.println("Сайт: " + url +  "         -----------    Результат проверки: " + (shingle.compare(result_hashes, hashes_textcheck) * koeffic));
+            Result += "Сайт: " + url +  "         -----------    Результат проверки: " + (shingle.compare(result_hashes, hashes_textcheck) * koeffic);
 
 
             try {
@@ -71,5 +73,6 @@ public class GoogleSearcher {
             }
 
         }
+        return Result;
     }
 }
