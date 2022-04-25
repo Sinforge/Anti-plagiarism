@@ -1,6 +1,7 @@
 package ru.sinforge.antiplagiarism.controller;
 
 
+import org.springframework.boot.Banner;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +15,14 @@ import java.io.IOException;
 @ComponentScan
 public class MainScreenController {
     private Text text = new Text();
-
-
+    @GetMapping(value = "/")
+    public String home(Model model) {
+        return "home";
+    }
+    @GetMapping(value = "/login")
+    public String greeting(Model model) {
+        return "login";
+    }
 
     @GetMapping(value = "/Text")
     public String Text (Model model) {
