@@ -19,7 +19,6 @@ public class GoogleSearcher {
         Document document = Jsoup.connect(search_url).userAgent("Chrome/4.0.249.0 Safari/532.5").followRedirects(true)
                 .referrer("http://www.google.com").get();
         document.charset(StandardCharsets.UTF_8);
-        System.out.println(document.title());
         Elements hrefs = document.select("a[href]");
         ArrayList<String> urls = new ArrayList<>();
         for (Element href : hrefs
@@ -32,47 +31,44 @@ public class GoogleSearcher {
             }
 
         }
-        System.out.println(urls);
         return urls;
 
     }
 
-    private String Result = "";
-
     //Составляет один единый текст из найденных на разных сайтах
-    public String ResultOfScan(String TextForCheck, ArrayList<String> urls) throws IOException {
+    public ArrayList<String> ResultOfScan(String TextForCheck, ArrayList<String> urls) throws IOException {
         Shingle shingle = new Shingle();
-        Result = "";
-        TextForCheck = shingle.canonize(TextForCheck);
+        ArrayList<String> result = new ArrayList<>();
         int size1 = TextForCheck.length();
         ArrayList<Integer> hashes_textcheck = shingle.genShingle(TextForCheck);
+        int number = 0;
         for (String url : urls
         ) {
+            number ++;
             String result_text = "";
-            Document document = Jsoup.connect(url).userAgent("Yandex").followRedirects(true)
-                    .referrer("http://www.google.com").get();
+            Document document;
+            try {
+                document = Jsoup.connect(url).userAgent("Yandex").followRedirects(true)
+                        .referrer("http://www.google.com").get();
+            } catch (IOException e) {
+                continue;
+            }
             Elements paragraphs = document.select("p");
             Elements Li_sents = document.select("li");
 
             for (Element paragraph : paragraphs
             ) {
-                result_text += paragraph.text();
+                result_text += " " + paragraph.text();
 
             }
             result_text = shingle.canonize(result_text);
+
             int size2 = result_text.length();
-            double koeffic = size2/size1;
             ArrayList<Integer> result_hashes = shingle.genShingle(result_text);
-            Result += "Сайт: " + url +  "         -----------    Результат проверки: " + (shingle.compare(result_hashes, hashes_textcheck) * koeffic);
+            result.add(("Сайт: " + url + "------Процент заимствований: " + (shingle.compare(hashes_textcheck, result_hashes))));
 
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
         }
-        return Result;
+        return result;
     }
 }

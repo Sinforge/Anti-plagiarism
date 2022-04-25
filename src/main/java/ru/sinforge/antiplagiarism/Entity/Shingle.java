@@ -76,10 +76,13 @@ public class Shingle {
 
         for (int i = 0; i < textShingles1Number; i++) {
             for (int j = 0; j < textShingles2Number; j++) {
-                if (textShingles1New.get(i).equals(textShingles2New.get(j))) similarShinglesNumber++;
+                if (textShingles1New.get(i).equals(textShingles2New.get(j)))  {
+                    similarShinglesNumber++;
+                    break;
+                }
             }
         }
 
-        return ((similarShinglesNumber / ((textShingles1Number + textShingles2Number) / 2.0)) * 100);
+        return ((similarShinglesNumber / textShingles1Number) * 100);
     }
 }
