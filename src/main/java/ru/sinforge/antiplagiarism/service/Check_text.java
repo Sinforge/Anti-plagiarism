@@ -1,7 +1,5 @@
 package ru.sinforge.antiplagiarism.service;
 
-import ru.sinforge.antiplagiarism.Entity.GoogleSearcher;
-
 import java.io.IOException;
 import java.util.ArrayList;
 

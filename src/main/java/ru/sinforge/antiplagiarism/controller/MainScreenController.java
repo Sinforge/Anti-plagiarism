@@ -1,12 +1,11 @@
 package ru.sinforge.antiplagiarism.controller;
 
 
-import org.springframework.boot.Banner;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.sinforge.antiplagiarism.Entity.Text;
+import ru.sinforge.antiplagiarism.service.Text;
 import ru.sinforge.antiplagiarism.service.Check_text;
 
 import java.io.IOException;
@@ -20,7 +19,7 @@ public class MainScreenController {
         return "home";
     }
     @GetMapping(value = "/login")
-    public String greeting(Model model) {
+    public String login(Model model) {
         return "login";
     }
 
