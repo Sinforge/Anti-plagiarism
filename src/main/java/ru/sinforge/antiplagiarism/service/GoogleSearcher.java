@@ -1,4 +1,4 @@
-package ru.sinforge.antiplagiarism.Entity;
+package ru.sinforge.antiplagiarism.service;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -66,8 +66,9 @@ public class GoogleSearcher {
             int size2 = result_text.length();
             ArrayList<Integer> result_hashes = shingle.genShingle(result_text);
             result.add(("Сайт: " + url + "------Процент заимствований: " + (shingle.compare(hashes_textcheck, result_hashes))));
-
-
+            if(result.size() == 3) {
+                break;
+            }
         }
         return result;
     }

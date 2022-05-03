@@ -1,4 +1,4 @@
-package ru.sinforge.antiplagiarism.Entity;
+package ru.sinforge.antiplagiarism.service;
 
 import org.springframework.stereotype.Component;
 
