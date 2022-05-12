@@ -20,7 +20,7 @@ public class RegistrationController {
 
     @GetMapping("/registration")
     public String registration() {
-        return "registration";
+        return "reg";
     }
 
     @PostMapping("/registration")
@@ -28,12 +28,12 @@ public class RegistrationController {
         User userFromDb = userRep.findByUsername(user.getUsername());
         if (userFromDb != null) {
             model.put("message", "User exists");
-            return "registration";
+            return "reg";
         }
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userRep.save(user);
-        return "redirect:/login";
+        return "auth";
     }
 
 }
