@@ -4,9 +4,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Check_text {
-    public ArrayList<String> start(String Usertext) throws IOException {
-        GoogleSearcher googleSearcher = new GoogleSearcher();//Гугл поисковик
-        ArrayList<String> UrlFoundedInGoogle = googleSearcher.findUrlsBySentence(Usertext);//находим ссылки по тексту;
-        return googleSearcher.ResultOfScan(Usertext, UrlFoundedInGoogle);//Найденный текст на страницах
+    public double start(String Usertext) throws IOException {
+        String[] Sentences = Usertext.split("\\.");
+        double res = 0.0;
+        for(int i = 0 ; i < Sentences.length; i++) {
+            GoogleSearcher googleSearcher = new GoogleSearcher();//Гугл поисковик
+            ArrayList<String> UrlFoundedInGoogle = googleSearcher.findUrlsBySentence(Usertext);//находим ссылки по тексту;
+            res += googleSearcher.ResultOfScan(Usertext, UrlFoundedInGoogle);//Найденный текст на страницах
+        }
+        return res / Sentences.length;
     }
 }

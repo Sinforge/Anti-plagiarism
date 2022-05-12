@@ -36,9 +36,9 @@ public class GoogleSearcher {
     }
 
     //Составляет один единый текст из найденных на разных сайтах
-    public ArrayList<String> ResultOfScan(String TextForCheck, ArrayList<String> urls) throws IOException {
+    public double ResultOfScan(String TextForCheck, ArrayList<String> urls) throws IOException {
         Shingle shingle = new Shingle();
-        ArrayList<String> result = new ArrayList<>();
+        double result = 0;
         int size1 = TextForCheck.length();
         ArrayList<Integer> hashes_textcheck = shingle.genShingle(TextForCheck);
         int number = 0;
@@ -65,10 +65,8 @@ public class GoogleSearcher {
 
             int size2 = result_text.length();
             ArrayList<Integer> result_hashes = shingle.genShingle(result_text);
-            result.add(("Сайт: " + url + "------Процент заимствований: " + (shingle.compare(hashes_textcheck, result_hashes))));
-            if(result.size() == 3) {
-                break;
-            }
+            result = Math.max(shingle.compare(hashes_textcheck, result_hashes), result);
+
         }
         return result;
     }

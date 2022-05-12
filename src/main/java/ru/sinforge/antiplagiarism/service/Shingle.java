@@ -1,6 +1,7 @@
 package ru.sinforge.antiplagiarism.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Shingle {
@@ -11,6 +12,9 @@ public class Shingle {
             "бы", "что", "кто", "он", "она"};
 
     private static final int SHINGLE_LEN = 2;
+
+
+
 
     /**
      * Метод занимается неполной канонизацией строки. Вырезает из строки предлоги, союзы, знаки препинания
