@@ -64,6 +64,7 @@
         <h1 align="center">Регистрация</h1>
 
         <form th:action="@{/registration}" method="post">
+            <div><p>Email <input type="email" name="email"/> </p></div>
             <div><p>Имя пользователя: <input type="text" name="username"/> </p></div>
             <div><p>Пароль: <input type="password" name="password"/></p></div>
             <div><input type="submit" value="Зарегистрироваться"/></div>
