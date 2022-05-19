@@ -32,7 +32,6 @@ public class UserService implements UserDetailsService {
         if (userFromDb != null) {
             return false;
         }
-        user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         user.setActivationCode(UUID.randomUUID().toString());
 
@@ -56,6 +55,7 @@ public class UserService implements UserDetailsService {
         if(user == null) {
             return false;
         }
+        user.setActive(true);
         user.setActivationCode(null);
 
         userRep.save(user);

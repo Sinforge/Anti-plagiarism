@@ -27,8 +27,6 @@ public class User implements UserDetails {
     @Setter
     private String password;
 
-    @Getter
-    @Setter
     private boolean active;
 
 
@@ -70,8 +68,15 @@ public class User implements UserDetails {
         return true;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
     public boolean isEnabled() {
-        return isActive();
+        return active;
     }
 }

@@ -1,22 +1,21 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Проверка текста на уникальность</title>
 
-
-
-    <link rel="stylesheet" href="/static/css/style.css">
-    <meta name="description" content="Лучший сайт по оценке уникальности текта среди одного!">
+    <link rel="stylesheet"  href="/static/css/style.css">
+    <meta name="description" content="Лучший сайт по оценке уникальности текcта среди одного!">
     <meta property="og:title" content="Three guys company - Text unique check">
     <meta property="og:description" content="Четкая проверка на уникальность текста">
-
     <meta property="og:type" content="website">
+    <link rel="icon"  href="/static/img/logo.jpg">
+
 
     <meta name="theme-color" content="#FF00FF">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
 
     <style>
         body
@@ -27,10 +26,10 @@
         }
     </style>
 
-</head>
-<body>
 
-<body background="/static/img/background.jpg">
+</head>
+
+<body>
 
 <div id="header" align="center">
 
@@ -49,8 +48,8 @@
         <form action="/service" method="get" class="header_form"> &nbsp; &nbsp;
             <button class="c-button">Проверка текста</button>
         </form>
-        <form class="header_form">&nbsp;  &nbsp;
-            <button class="c-button" action="/algorithms" method="get">Справка по алгоритмам анализа текста</button>
+        <form class="header_form" action="/algorithms" method="get">&nbsp;  &nbsp;
+            <button class="c-button">Справка по алгоритмам анализа текста</button>
         </form>
     </section>
 
@@ -60,21 +59,16 @@
 
 
     <section id="content-section">
-        <h1 align="center">Результат</h1>
+        <h1 align="center">Справка по алгоритмам анализа текста</h1>
 
-        <section class="res-form" align="left">
-            <p th:text="${result_of_scan.content}"></p>
+        <div class="message" align="left">
+            <p>Здесь алгоритмы</p>
 
-            <ul>
-                <li><a href="">Submit another message</a></li>
-            </ul>
-        </section>
-
-        <div class="footer" align="bottom-left">
-            <p class="colon">Никем не лицензировано. Tgt - антиплагиат. </p>
+            <div class="footer" align="bottom-left">
+                <p class="colon">Никем не лицензировано. Tgt - антиплагиат. </p>
+            </div>
         </div>
     </section>
 </div>
 </body>
-
 </html>

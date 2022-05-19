@@ -7,28 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Проверка текста на уникальность</title>
 
-  <!--
-  <script type="module">
-      document.documentElement.classList.remove('no-js');
-      document.documentElement.classList.add('js');
-  </script>
-  -->
-
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="static/css/style.css">
   <meta name="description" content="Лучший сайт по оценке уникальности текта среди одного!">
   <meta property="og:title" content="Three guys company - Text unique check">
   <meta property="og:description" content="Четкая проверка на уникальность текста">
 
-  <!--<meta property="og:image" content="image.jpg">
-  <meta property="og:url" content="">
-  <link rel="canonical" href="">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
   <meta property="og:type" content="website">
 
 
 
   <meta name="theme-color" content="#FF00FF">
+  <link rel="icon" type="image/png"  href="/static/img/favicon-32x32.png">
+
+  <style>
+    body
+    {
+      background-image: url("/static/img/background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
 
 
 </head>
@@ -38,48 +36,45 @@
 <div id="header" align="center">
 
   <section id="container">
-    <img src="/static/img/logo.jpg" alt="Logo not loaded" title="logo" id="con1" /> &nbsp; &nbsp;
-    <form action="/registration" method="get">&nbsp;  &nbsp;  &nbsp;
+    <img src="/static/img/logo.jpg" alt="Logo not loaded" title="logo" id="con1" /> &nbsp;
+    <form action="/registration" method="get" class="header_form">&nbsp;
       <button class="c-button" >Регистрация</button>
     </form>
 
-    <form action="/auth" method="get">&nbsp;  &nbsp;
+    <form action="/auth" method="get" class="header_form">&nbsp;
       <button class="c-button">Вход</button>
     </form>
-    <form action="/service" method="get"> &nbsp; &nbsp;
+    <form action="/lk" method="get" class="header_form">&nbsp;
+      <button class="c-button">Личный кабинет</button>
+    </form>
+    <form action="/service" method="get" class="header_form"> &nbsp;
       <button class="c-button">Проверка текста</button>
     </form>
-    <form>&nbsp;  &nbsp;
+    <form class="header_form" action="/algorithms" method="get">&nbsp;  &nbsp;
       <button class="c-button">Справка по алгоритмам анализа текста</button>
     </form>
   </section>
 
 </div>
 
-<div>
-  <form th:action="@{/logout}" method="post">
-    <input type="hidden" name="_csrf" value=" {{_csrf.token}}">
-    <input type="submit" value="Sign Out"/>
-  </form>
-</div>
-<div id="mainContainer" align="center">
 
+<div id="mainContainer" align="center">
 
   <section id="content-section">
     <h1 align="center">Проверка текста на плагиат</h1>
 
-    <form name="text_plagiarism_input-form" th:action="@{/service}" th:object="${InputText}" th:method="POST" align="left">
-      <p>Введите текст:</p>
-      <textarea  th:field="*{content}" name="plag_input" cols=40 rows=10 required>Ваш текст</textarea>
-      <p>Выберите алгоритм проверки:</p>
+    <form name="text_plagiarism_input-form" th:action="@{/service}" th:object="${InputText}" th:method="POST" align="left" class="text_plagiar_form">
+      <h2>Введите текст:</h2>
+      <textarea  th:field="*{content}" name="plag_input" cols=40 rows=10 required placeholder="Text"></textarea>
+      <h2>Выберите алгоритм проверки:</h2>
 
-      <p><select name="algorithm_select">
+      <p><select name="algorithm_select" class="select-css">
         <option value="r1">Алгоритм 1</option>
         <option value="r2">Алгоритм 2</option>
         <option value="r3">Алгоритм 3</option>
       </select></p>
 
-      <button class="c-button" onclick="">Проверить</button>
+      <button class="c-button submit service" onclick="">Проверить</button>
     </form>
 
     <div class="footer" align="bottom-left">
@@ -87,5 +82,7 @@
     </div>
   </section>
 </div>
+
 </body>
+
 </html>

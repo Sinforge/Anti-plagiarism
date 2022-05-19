@@ -7,28 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Проверка текста на уникальность</title>
 
-  <!--
-  <script type="module">
-      document.documentElement.classList.remove('no-js');
-      document.documentElement.classList.add('js');
-  </script>
-  -->
+
 
   <link rel="stylesheet" href="/static/css/style.css">
   <meta name="description" content="Лучший сайт по оценке уникальности текта среди одного!">
   <meta property="og:title" content="Three guys company - Text unique check">
   <meta property="og:description" content="Четкая проверка на уникальность текста">
 
-  <!--<meta property="og:image" content="image.jpg">
-  <meta property="og:url" content="">
-  <link rel="canonical" href="">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
   <meta property="og:type" content="website">
 
 
 
   <meta name="theme-color" content="#FF00FF">
+
+  <style>
+    body
+    {
+      background-image: url("/static/img/background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
 
 
 </head>
@@ -39,17 +39,20 @@
 
   <section id="container">
     <img src="/static/img/logo.jpg" alt="Logo not loaded" title="logo" id="con1" /> &nbsp; &nbsp;
-    <form action="/registration" method="get">&nbsp;  &nbsp;  &nbsp;
+    <form action="/registration" method="get" class="header_form">&nbsp;  &nbsp;
       <button class="c-button" >Регистрация</button>
     </form>
 
-    <form action="/auth" method="get">&nbsp;  &nbsp;
+    <form action="/auth" method="get" class="header_form">&nbsp;  &nbsp;
       <button class="c-button">Вход</button>
     </form>
-    <form action="/service" method="get"> &nbsp; &nbsp;
+    <form action="/lk" method="get" class="header_form">&nbsp;  &nbsp;
+      <button class="c-button">Личный кабинет</button>
+    </form>
+    <form action="/service" method="get" class="header_form"> &nbsp; &nbsp;
       <button class="c-button">Проверка текста</button>
     </form>
-    <form>&nbsp;  &nbsp;
+    <form class="header_form" action="/algorithms" method="get">&nbsp;  &nbsp;
       <button class="c-button">Справка по алгоритмам анализа текста</button>
     </form>
   </section>
@@ -62,11 +65,20 @@
   <section id="content-section">
     <h1 align="center">Авторизация</h1>
 
-    <form th:action="@{/auth}" method="post">
-      <div><p> Имя пользователя: <input type="text" name="username"/> </p></div>
-      <div><p> Пароль: <input type="password" name="password"/> </p></div>
-      <div><input type="submit" value="Войти"/></div>
+    <form th:action="@{/auth}" method="post" class="inp_auth_reg_form" align="left">
+
+      <div class="text-field">
+        <label class="text-field__label" for="username">Имя пользователя:</label>
+        <input class="text-field__input" type="text" name="username" placeholder="username" required>
+      </div>
+      <div class="text-field">
+        <label class="text-field__label" for="password">Пароль:</label>
+        <input class="text-field__input" type="password" name="password" placeholder="password" required>
+      </div>
+      <div><input type="submit" value="Войти" class="c-button submit"/></div>
+
     </form>
+
     <div th:if="${param.error}">
       Были введены некорректные данные. Попробуйте снова
     </div>

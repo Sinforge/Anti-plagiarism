@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.thymeleaf.org" >
+      xmlns:th="http://www.thymeleaf.org" >
 
 <head>
     <meta charset="UTF-8">
@@ -11,38 +11,44 @@
     <meta name="description" content="Лучший сайт по оценке уникальности текcта среди одного!">
     <meta property="og:title" content="Three guys company - Text unique check">
     <meta property="og:description" content="Четкая проверка на уникальность текста">
-
-    <!--<meta property="og:image" content="image.jpg">
-    <meta property="og:url" content="">
-    <link rel="canonical" href="">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml"> -->
     <meta property="og:type" content="website">
-
+    <link rel="icon" sizes="32x32" href="/static/img/logo.jpg">
 
 
     <meta name="theme-color" content="#FF00FF">
 
+    <style>
+        body
+        {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
 
 </head>
 
-<body background="/static/img/background.jpg">
+<body>
 
 <div id="header" align="center">
 
     <section id="container">
         <img src="/static/img/logo.jpg" alt="Logo not loaded" title="logo" id="con1" /> &nbsp; &nbsp;
-        <form action="/registration" method="get">&nbsp;  &nbsp;
+        <form action="/registration" method="get" class="header_form">&nbsp;  &nbsp;
             <button class="c-button" >Регистрация</button>
         </form>
 
-        <form action="/auth" method="get">&nbsp;  &nbsp;
+        <form action="/auth" method="get" class="header_form">&nbsp;  &nbsp;
             <button class="c-button">Вход</button>
         </form>
-        <form action="/service" method="get"> &nbsp; &nbsp;
+        <form action="/lk" method="get" class="header_form">&nbsp;  &nbsp;
+            <button class="c-button">Личный кабинет</button>
+        </form>
+        <form action="/service" method="get" class="header_form"> &nbsp; &nbsp;
             <button class="c-button">Проверка текста</button>
         </form>
-        <form>&nbsp;  &nbsp;
+        <form class="header_form" action="/algorithms" method="get">&nbsp;  &nbsp;
             <button class="c-button">Справка по алгоритмам анализа текста</button>
         </form>
     </section>

@@ -77,4 +77,9 @@ public class MainScreenController {
         model.addAttribute("results", results);
         return "lk";
     }
+
+    @GetMapping("/algorithms")
+    public String AboutAlgos(Model model) {
+        return "algorithms";
+    }
 }
