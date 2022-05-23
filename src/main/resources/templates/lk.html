@@ -80,12 +80,13 @@
 
             <p class="lk-text">Выйти из аккаунта:</p>
             <div>
-                <form th:action="@{/logout}" method="post">
-                    <input type="hidden" name="_csrf" value=" {{_csrf.token}}">
-                    <input type="submit" value="Sign Out" class="c-button submit service"/>
-                </form>
+
             </div>
 
+        </form>
+        <form th:action="@{/logout}" method="post">
+            <input type="hidden" name="_csrf" value=" {{_csrf.token}}">
+            <input type="submit" value="Sign Out" class="c-button submit service"/>
         </form>
 
         <div class="footer" align="bottom-left">
