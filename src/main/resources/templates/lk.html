@@ -39,7 +39,7 @@
             <button class="c-button" >Регистрация</button>
         </form>
 
-        <form action="/auth" method="get" class="header_form">&nbsp;  &nbsp;
+        <form action="/auth" method="get" class="header_form">&nbsp;  &nbsp
             <button class="c-button">Вход</button>
         </form>
         <form action="/lk" method="get" class="header_form">&nbsp;  &nbsp;
@@ -83,11 +83,13 @@
 
             </div>
 
+
         </form>
         <form th:action="@{/logout}" method="post">
             <input type="hidden" name="_csrf" value=" {{_csrf.token}}">
             <input type="submit" value="Sign Out" class="c-button submit service"/>
         </form>
+
 
         <div class="footer" align="bottom-left">
             <p class="colon">Никем не лицензировано. Tgt - антиплагиат. </p>

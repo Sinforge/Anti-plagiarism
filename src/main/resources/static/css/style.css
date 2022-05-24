@@ -1,7 +1,7 @@
 #header
 {
     margin: 0 auto;
-    width: 75%;
+    width: 100%;
 }
 
 #mainContainer
@@ -16,7 +16,7 @@
     background-color: white;
     box-shadow: 4px 4px 4px rgba(50, 50, 50, 0.75);
     min-width: 500px;
-    width: 1400px;
+    width: 1700px;
     display: flex;
     height: 10%;
     flex-direction: row;

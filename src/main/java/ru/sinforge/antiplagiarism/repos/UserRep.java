@@ -7,5 +7,5 @@ import ru.sinforge.antiplagiarism.domain.User;
 @Repository
 public interface UserRep extends JpaRepository<User, Long> {
     User findByUsername(String username);
-    User findByActivationCode(String code);
+    User findByActivationCode(String activationCod);
 }

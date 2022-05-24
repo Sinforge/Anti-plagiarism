@@ -34,7 +34,6 @@ public class UserService implements UserDetailsService {
         }
         user.setRoles(Collections.singleton(Role.USER));
         user.setActivationCode(UUID.randomUUID().toString());
-
         userRep.save(user);
 
         if(!StringUtils.isEmpty(user.getEmail())) {
