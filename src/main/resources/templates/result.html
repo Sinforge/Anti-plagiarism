@@ -28,8 +28,6 @@
     </style>
 
 </head>
-<body>
-
 <body background="/static/img/background.jpg">
 
 <div id="header" align="center">
@@ -49,9 +47,7 @@
         <form action="/service" method="get" class="header_form"> &nbsp; &nbsp;
             <button class="c-button">Проверка текста</button>
         </form>
-        <form class="header_form">&nbsp;  &nbsp;
-            <button class="c-button" action="/algorithms" method="get">Справка по алгоритмам анализа текста</button>
-        </form>
+
     </section>
 
 </div>
@@ -63,10 +59,17 @@
         <h1 align="center">Результат</h1>
 
         <section class="res-form" align="left">
-            <p th:text="${result_of_scan.content}"></p>
-
+            <p>Процент оригинальности: <p th:text="${result_of_scan.content}"></p>
+            <table class="table">
+                <tr>
+                    <th>Ваш материал мог быть взят отсюда:</th>
+                </tr>
+                <tr th:each="url : ${find_url}" >
+                    <td th:text="${url}"></td>
+                </tr>
+            </table>
             <ul>
-                <li><a href="">Submit another message</a></li>
+                <li><a href="">Выполнить еще одну проверку</a></li>
             </ul>
         </section>
 

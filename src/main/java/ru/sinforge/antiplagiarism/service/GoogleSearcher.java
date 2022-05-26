@@ -8,6 +8,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //Класс для взаимодействия с поисковой системой
 public class GoogleSearcher {
@@ -36,8 +37,10 @@ public class GoogleSearcher {
     }
 
     //Составляет один единый текст из найденных на разных сайтах
-    public double ResultOfScan(String TextForCheck, ArrayList<String> urls) throws IOException {
+    public Object[] ResultOfScan(String TextForCheck, ArrayList<String> urls) throws IOException {
         Shingle shingle = new Shingle();
+        Object[] res1 = new Object[2];
+        ArrayList<String> result_url=  new ArrayList<>();
         double result = 0;
         int size1 = TextForCheck.length();
         ArrayList<Integer> hashes_textcheck = shingle.genShingle(TextForCheck);
@@ -65,9 +68,13 @@ public class GoogleSearcher {
 
             int size2 = result_text.length();
             ArrayList<Integer> result_hashes = shingle.genShingle(result_text);
+            if(shingle.compare(hashes_textcheck, result_hashes) > 0) {
+                result_url.add(url);
+            }
             result = Math.max(shingle.compare(hashes_textcheck, result_hashes), result);
-
         }
-        return result;
+        res1[0] = (int)result;
+        res1[1] = result_url;
+        return res1;
     }
 }

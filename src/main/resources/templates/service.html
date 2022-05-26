@@ -50,9 +50,6 @@
     <form action="/service" method="get" class="header_form"> &nbsp;
       <button class="c-button">Проверка текста</button>
     </form>
-    <form class="header_form" action="/algorithms" method="get">&nbsp;  &nbsp;
-      <button class="c-button">Справка по алгоритмам анализа текста</button>
-    </form>
   </section>
 
 </div>
@@ -65,14 +62,9 @@
 
     <form name="text_plagiarism_input-form" th:action="@{/service}" th:object="${InputText}" th:method="POST" align="left" class="text_plagiar_form">
       <h2>Введите текст:</h2>
-      <textarea  th:field="*{content}" name="plag_input" cols=40 rows=10 required placeholder="Text"></textarea>
+      <textarea  th:field="${InputText.content}" name="plag_input" cols=100 rows=10 required placeholder="Text"></textarea>
       <h2>Выберите алгоритм проверки:</h2>
 
-      <p><select name="algorithm_select" class="select-css">
-        <option value="r1">Алгоритм 1</option>
-        <option value="r2">Алгоритм 2</option>
-        <option value="r3">Алгоритм 3</option>
-      </select></p>
 
       <button class="c-button submit service" onclick="">Проверить</button>
     </form>

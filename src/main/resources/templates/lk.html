@@ -48,9 +48,6 @@
         <form action="/service" method="get" class="header_form"> &nbsp; &nbsp;
             <button class="c-button">Проверка текста</button>
         </form>
-        <form class="header_form" action="/algorithms" method="get">&nbsp;  &nbsp;
-            <button class="c-button">Справка по алгоритмам анализа текста</button>
-        </form>
     </section>
 
 </div>
@@ -64,7 +61,7 @@
         <form name="lk-form" align="left">
             <section class="lk-login">
                 <p class="big_p">Логин:<p>
-                <strong><p class="big_p">Кто ты я да а ты что ну ты что я</p>
+                <strong><p class="big_p" th:text="${username}"></p></strong>
             </section>
             <h2>История запросов:</h2>
             <table class="table">
@@ -73,8 +70,8 @@
                     <th>Процент совпадения</th>
                 </tr>
                 <tr th:each="result : ${results}" >
-                    <td th:text="${result.date}">Ктоя</td>
-                    <td th:text="${result.res}">Гдеяячмямчмямчмчмчмчмчмячмчмчямччмячммячмямчямячмячмячмчмчямям</td>
+                    <td th:text="${result.date}"></td>
+                    <td th:text="${result.res}"></td>
                 </tr>
             </table>
 

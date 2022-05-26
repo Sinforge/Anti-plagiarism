@@ -15,6 +15,7 @@ import ru.sinforge.antiplagiarism.service.Check_text;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -51,7 +52,8 @@ public class MainScreenController {
     public String Result(@AuthenticationPrincipal User user, @ModelAttribute("InputText") Text text, Model model) {
         Check_text checkText = new Check_text();
         try {
-            double res = 100 - checkText.start(text.getContent());
+            Object[] res_of_ch = checkText.start(text.getContent());
+            double res = 100 - (int)res_of_ch[0];
 
             //Определяем дату
             Date dateNow = new Date();
@@ -60,6 +62,7 @@ public class MainScreenController {
 
 
             resultRepo.save(result);
+            model.addAttribute("find_url", (ArrayList<String>) res_of_ch[1]);
 
             text.setContent("" +result.getRes());
             model.addAttribute("result_of_scan", text );
@@ -74,6 +77,7 @@ public class MainScreenController {
     @GetMapping("/lk")
     public String PA(@AuthenticationPrincipal User user, Model model) {
         List<Result> results = resultRepo.findByUser(user);
+        model.addAttribute("username", user.getUsername());
         model.addAttribute("results", results);
         return "lk";
     }
