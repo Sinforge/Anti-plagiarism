@@ -82,8 +82,4 @@ public class MainScreenController {
         return "lk";
     }
 
-    @GetMapping("/algorithms")
-    public String AboutAlgos(Model model) {
-        return "algorithms";
-    }
 }
