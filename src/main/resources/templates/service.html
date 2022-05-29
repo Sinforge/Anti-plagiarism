@@ -63,7 +63,6 @@
     <form name="text_plagiarism_input-form" th:action="@{/service}" th:object="${InputText}" th:method="POST" align="left" class="text_plagiar_form">
       <h2>Введите текст:</h2>
       <textarea  th:field="${InputText.content}" name="plag_input" cols=100 rows=10 required placeholder="Text"></textarea>
-      <h2>Выберите алгоритм проверки:</h2>
 
 
       <button class="c-button submit service" onclick="">Проверить</button>
